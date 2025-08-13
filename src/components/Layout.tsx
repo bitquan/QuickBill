@@ -22,7 +22,7 @@ export default function Layout({ children }: LayoutProps) {
   // Different navigation for authenticated vs anonymous users
   const getNavItems = () => {
     if (currentUser) {
-      // Authenticated user - full navigation
+      // Authenticated user - full pro navigation
       return [
         { path: "/dashboard", label: "Dashboard" },
         { path: "/create", label: "Create" },
@@ -30,11 +30,12 @@ export default function Layout({ children }: LayoutProps) {
         { path: "/more", label: "More" },
       ];
     } else {
-      // Anonymous user - limited navigation
+      // Anonymous user - freemium navigation focused on conversion
       return [
-        { path: "/", label: "Home" },
-        { path: "/create", label: "Create" },
+        { path: "/home", label: "Home" },
+        { path: "/create", label: "Try Free" },
         { path: "/login", label: "Sign In" },
+        { path: "/signup", label: "Get Pro" },
       ];
     }
   };

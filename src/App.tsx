@@ -43,10 +43,10 @@ export default function App() {
             <Route path="/payment-success" element={<PaymentSuccess />} />
             <Route path="/payment-cancelled" element={<PaymentCancelled />} />
 
-            {/* Enhanced Welcome page for new users */}
+            {/* Marketing/Landing page for new visitors */}
             <Route path="/welcome" element={<EnhancedWelcome />} />
 
-            {/* Free tier routes (no authentication required) */}
+            {/* Freemium routes - Anyone can access (free trial) */}
             <Route
               path="/create"
               element={
@@ -68,7 +68,17 @@ export default function App() {
               }
             />
 
-            {/* Protected routes (require authentication) */}
+            {/* Home page - Smart routing based on auth status */}
+            <Route
+              path="/home"
+              element={
+                <Layout>
+                  <Home />
+                </Layout>
+              }
+            />
+
+            {/* Protected routes - Require authentication */}
             <Route
               path="/dashboard"
               element={
@@ -90,16 +100,6 @@ export default function App() {
               }
             />
             <Route
-              path="/home"
-              element={
-                <ProtectedRoute>
-                  <Layout>
-                    <Home />
-                  </Layout>
-                </ProtectedRoute>
-              }
-            />
-            <Route
               path="/more"
               element={
                 <ProtectedRoute>
@@ -109,6 +109,8 @@ export default function App() {
                 </ProtectedRoute>
               }
             />
+
+            {/* Admin dashboard - Protected route */}
             <Route
               path="/admin"
               element={
@@ -120,7 +122,7 @@ export default function App() {
               }
             />
 
-            {/* Default route - redirect to enhanced welcome */}
+            {/* Default route - Enhanced welcome for conversion */}
             <Route path="/" element={<EnhancedWelcome />} />
           </Routes>
           <Toaster position="top-right" />
