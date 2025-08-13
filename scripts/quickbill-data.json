@@ -1,0 +1,83 @@
+{
+  "subscriptionPlans": {
+    "free": {
+      "id": "free",
+      "name": "Free",
+      "price": 0,
+      "currency": "USD",
+      "interval": "month",
+      "features": {
+        "invoicesPerMonth": 3,
+        "pdfDownloads": true,
+        "emailSupport": false,
+        "customBranding": false,
+        "analytics": false,
+        "apiAccess": false
+      },
+      "description": "Perfect for getting started with basic invoicing",
+      "popular": false,
+      "active": true
+    },
+    "pro": {
+      "id": "pro",
+      "name": "Pro",
+      "price": 4.99,
+      "currency": "USD",
+      "interval": "month",
+      "features": {
+        "invoicesPerMonth": -1,
+        "pdfDownloads": true,
+        "emailSupport": true,
+        "customBranding": true,
+        "analytics": true,
+        "apiAccess": false
+      },
+      "description": "For growing businesses that need unlimited invoicing",
+      "popular": true,
+      "active": true
+    }
+  },
+  "settings": {
+    "app": {
+      "version": "1.0.0",
+      "maintenance": false,
+      "features": {
+        "emailInvoices": false,
+        "recurringInvoices": false,
+        "multiCurrency": false,
+        "teamAccounts": false
+      },
+      "limits": {
+        "free": {
+          "invoicesPerMonth": 3,
+          "storageGB": 0.1
+        },
+        "pro": {
+          "invoicesPerMonth": -1,
+          "storageGB": 5
+        }
+      }
+    }
+  },
+  "templates": {
+    "defaultBusiness": {
+      "name": "",
+      "email": "",
+      "phone": "",
+      "address": "",
+      "logo": null,
+      "website": "",
+      "taxId": "",
+      "currency": "USD",
+      "taxRate": 0,
+      "paymentTerms": "Net 30",
+      "invoicePrefix": "INV",
+      "nextInvoiceNumber": 1,
+      "theme": {
+        "primaryColor": "#3B82F6",
+        "secondaryColor": "#EF4444",
+        "fontFamily": "Inter"
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://quickbill-app-b2467.web.app/sitemap.xml
+
+# Block admin/private areas (none currently)
+# Disallow: /admin/

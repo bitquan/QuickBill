@@ -1,0 +1,12 @@
+specVersion: "v1"
+serviceId: "QuickBill"
+location: "us-east4"
+schema:
+  source: "./schema"
+  datasource:
+    postgresql:
+      database: "fdcdb"
+      cloudSql:
+        instanceId: "quickbill-fdc"
+      # schemaValidation: "COMPATIBLE"
+connectorDirs: ["./connector"]
