@@ -47,14 +47,6 @@ interface ClientAnalytic {
   averageInvoiceGap?: number;
 }
 
-// Analytics data interface for internal use
-interface AnalyticsDataInput {
-  timeSeriesData?: TimeSeriesData[];
-  clients?: ClientAnalytic[];
-  totalRevenue?: number;
-  totalInvoices?: number;
-}
-
 // Predictive Analytics Interfaces
 export interface RevenueForecast {
   period: string;
@@ -178,9 +170,8 @@ class PredictiveAnalyticsService {
 
       // Simplified business health for now
       const businessHealth = {
-        overallScore: 75,
-        riskFactors: [] as string[],
-        opportunities: [] as string[],
+        score: 75,
+        factors: [] as string[],
         recommendations: [] as string[],
       };
 
@@ -189,8 +180,8 @@ class PredictiveAnalyticsService {
         churnRisks,
         growthProjections,
         seasonalTrends,
-        businessHealth,
         insights: [], // Simplified for now
+        businessHealth,
         lastUpdated: new Date().toISOString(),
       };
     } catch (error) {
@@ -324,62 +315,6 @@ class PredictiveAnalyticsService {
   }
 
   /**
-   * Project business growth metrics
-   */
-  private async projectGrowth(
-    analytics: AnalyticsDataInput
-  ): Promise<GrowthProjection[]> {
-    const projections: GrowthProjection[] = [];
-
-    const timeSeriesData = analytics.timeSeriesData || [];
-    if (!timeSeriesData.length) {
-      return this.getDemoGrowthProjections();
-    }
-
-    // Revenue growth projection
-    const recentRevenue = timeSeriesData
-      .slice(-12)
-      .reduce((sum, d) => sum + d.revenue, 0);
-    const previousRevenue =
-      timeSeriesData.slice(-24, -12).reduce((sum, d) => sum + d.revenue, 0) ||
-      recentRevenue;
-    const revenueGrowthRate =
-      previousRevenue > 0
-        ? ((recentRevenue - previousRevenue) / previousRevenue) * 100
-        : 0;
-
-    projections.push({
-      metric: 'Monthly Revenue',
-      currentValue: recentRevenue / 12,
-      projectedValue: (recentRevenue / 12) * (1 + revenueGrowthRate / 100),
-      growthRate: revenueGrowthRate,
-      confidence: this.calculateGrowthConfidence(timeSeriesData),
-      timeframe: '1m',
-      factors: [
-        'Historical performance',
-        'Seasonal trends',
-        'Client retention',
-      ],
-    });
-
-    // Client base growth
-    const clientCount = analytics.clients?.length || 0;
-    const clientGrowthRate = this.calculateGrowthRate(timeSeriesData);
-
-    projections.push({
-      metric: 'Client Base',
-      currentValue: clientCount,
-      projectedValue: Math.round(clientCount * (1 + clientGrowthRate / 100)),
-      growthRate: clientGrowthRate,
-      confidence: 75,
-      timeframe: '3m',
-      factors: ['Client acquisition rate', 'Churn prediction', 'Market trends'],
-    });
-
-    return projections;
-  }
-
-  /**
    * Analyze seasonal trends and patterns
    */
   private analyzeSeasonalTrends(
@@ -428,171 +363,7 @@ class PredictiveAnalyticsService {
     );
   }
 
-  /**
-   * Generate actionable business insights
-   */
-  private generateInsights(
-    analytics: AnalyticsDataInput,
-    forecast: RevenueForecast[],
-    churnRisks: ChurnRiskClient[]
-  ): PredictiveInsight[] {
-    const insights: PredictiveInsight[] = [];
-
-    // Revenue trend insight
-    const recentForecast = forecast.slice(0, 4);
-    const averageGrowth = recentForecast.reduce(
-      (sum, f) => sum + (f.trend === 'increasing' ? 1 : -1),
-      0
-    );
-
-    if (averageGrowth > 2) {
-      insights.push({
-        id: 'revenue_growth',
-        type: 'opportunity',
-        title: 'Strong Revenue Growth Predicted',
-        description:
-          'Your revenue is projected to grow consistently over the next month. Consider scaling your operations.',
-        impact: 'high',
-        confidence: 85,
-        actionable: true,
-        suggestedActions: [
-          'Plan for increased capacity',
-          'Consider hiring additional staff',
-          'Invest in business tools',
-        ],
-        estimatedValue: recentForecast[3]?.predictedRevenue,
-      });
-    }
-
-    // High-risk client insight
-    const criticalRiskClients = churnRisks.filter(
-      (c) => c.riskLevel === 'critical'
-    );
-    if (criticalRiskClients.length > 0) {
-      insights.push({
-        id: 'churn_risk',
-        type: 'risk',
-        title: `${criticalRiskClients.length} Client${
-          criticalRiskClients.length > 1 ? 's' : ''
-        } at Critical Risk`,
-        description:
-          'Some of your clients show signs of potential churn. Immediate action recommended.',
-        impact: 'high',
-        confidence: 90,
-        actionable: true,
-        suggestedActions: [
-          'Schedule client check-ins',
-          'Review service quality',
-          'Offer incentives or discounts',
-        ],
-        estimatedValue: criticalRiskClients.reduce(
-          (sum, c) => sum + c.totalRevenue,
-          0
-        ),
-      });
-    }
-
-    // Seasonal opportunity
-    const timeSeriesData = analytics.timeSeriesData || [];
-    if (timeSeriesData.length > 12) {
-      insights.push({
-        id: 'seasonal_opportunity',
-        type: 'opportunity',
-        title: 'Seasonal Revenue Pattern Detected',
-        description:
-          'Your business shows seasonal patterns. Plan marketing campaigns around peak periods.',
-        impact: 'medium',
-        confidence: 75,
-        actionable: true,
-        suggestedActions: [
-          'Prepare for seasonal peaks',
-          'Adjust pricing strategy',
-          'Plan marketing campaigns',
-        ],
-      });
-    }
-
-    return insights;
-  }
-
-  /**
-   * Assess overall business health
-   */
-  private assessBusinessHealth(analytics: AnalyticsDataInput): {
-    score: number;
-    factors: string[];
-    recommendations: string[];
-  } {
-    let score = 100;
-    const factors: string[] = [];
-    const recommendations: string[] = [];
-
-    // Revenue consistency (30% weight)
-    const timeSeriesData = analytics.timeSeriesData || [];
-    if (timeSeriesData.length > 1) {
-      const revenueVariation = this.calculateVariation(
-        timeSeriesData.map((d) => d.revenue)
-      );
-      if (revenueVariation > 0.5) {
-        score -= 30;
-        factors.push('High revenue volatility');
-        recommendations.push('Work on consistent revenue streams');
-      } else if (revenueVariation > 0.3) {
-        score -= 15;
-        factors.push('Moderate revenue volatility');
-      }
-    }
-
-    // Client diversification (25% weight)
-    const clients = analytics.clients || [];
-    if (clients.length < 3) {
-      score -= 25;
-      factors.push('Limited client base');
-      recommendations.push('Focus on client acquisition');
-    } else if (clients.length < 5) {
-      score -= 10;
-      factors.push('Small client base');
-    }
-
-    // Payment health (25% weight)
-    const averagePaymentDelay =
-      clients.reduce((sum, c) => sum + (c.averagePaymentDelay || 0), 0) /
-      clients.length;
-    if (averagePaymentDelay > 30) {
-      score -= 25;
-      factors.push('Long payment delays');
-      recommendations.push('Review payment terms and follow-up processes');
-    } else if (averagePaymentDelay > 14) {
-      score -= 10;
-      factors.push('Moderate payment delays');
-    }
-
-    // Growth trajectory (20% weight)
-    if (timeSeriesData.length > 6) {
-      const recent = timeSeriesData
-        .slice(-3)
-        .reduce((sum, d) => sum + d.revenue, 0);
-      const previous = timeSeriesData
-        .slice(-6, -3)
-        .reduce((sum, d) => sum + d.revenue, 0);
-      if (previous > 0 && recent < previous * 0.9) {
-        score -= 20;
-        factors.push('Declining revenue trend');
-        recommendations.push('Analyze and address revenue decline');
-      }
-    }
-
-    return {
-      score: Math.max(0, Math.round(score)),
-      factors: factors.length > 0 ? factors : ['Strong business fundamentals'],
-      recommendations:
-        recommendations.length > 0
-          ? recommendations
-          : ['Continue current strategy'],
-    };
-  }
-
-  // Helper Methods
+  // Helper Methods (keeping only used ones)
   private linearRegression(
     x: number[],
     y: number[]
@@ -632,15 +403,6 @@ class PredictiveAnalyticsService {
     );
   }
 
-  private calculateGrowthRate(data: TimeSeriesData[]): number {
-    if (data.length < 2) return 0;
-
-    const recent = data.slice(-4).reduce((sum, d) => sum + d.revenue, 0);
-    const previous = data.slice(-8, -4).reduce((sum, d) => sum + d.revenue, 0);
-
-    return previous > 0 ? ((recent - previous) / previous) * 100 : 0;
-  }
-
   private calculateForecastConfidence(
     _data: TimeSeriesData[],
     periodsAhead: number
@@ -649,25 +411,6 @@ class PredictiveAnalyticsService {
     const baseConfidence = 85;
     const decayRate = 2;
     return Math.max(50, baseConfidence - periodsAhead * decayRate);
-  }
-
-  private calculateGrowthConfidence(data: TimeSeriesData[]): number {
-    if (data.length < 6) return 60;
-
-    const variation = this.calculateVariation(data.map((d) => d.revenue));
-    return Math.max(50, 90 - variation * 100);
-  }
-
-  private calculateVariation(values: number[]): number {
-    if (values.length < 2) return 0;
-
-    const mean = values.reduce((sum, v) => sum + v, 0) / values.length;
-    const squaredDiffs = values.map((v) => Math.pow(v - mean, 2));
-    const variance =
-      squaredDiffs.reduce((sum, v) => sum + v, 0) / values.length;
-    const stdDev = Math.sqrt(variance);
-
-    return mean > 0 ? stdDev / mean : 0;
   }
 
   private groupByMonth(
@@ -881,4 +624,5 @@ class PredictiveAnalyticsService {
   }
 }
 
-export const predictiveAnalyticsService = new PredictiveAnalyticsService();
+export const advancedPredictiveAnalyticsService =
+  new PredictiveAnalyticsService();
