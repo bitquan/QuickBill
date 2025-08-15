@@ -363,6 +363,43 @@ class CloudStorageService {
         invoice.client.email.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }
+
+  /**
+   * User Preferences Management
+   */
+  async saveUserPreferences(
+    userId: string,
+    preferences: any
+  ): Promise<void> {
+    try {
+      const userRef = doc(db, "users", userId);
+      await updateDoc(userRef, {
+        preferences: {
+          ...preferences,
+          updatedAt: serverTimestamp(),
+        },
+      });
+    } catch (error) {
+      console.error("Error saving user preferences:", error);
+      throw error;
+    }
+  }
+
+  async getUserPreferences(userId: string): Promise<any | null> {
+    try {
+      const userRef = doc(db, "users", userId);
+      const userSnap = await getDoc(userRef);
+      
+      if (userSnap.exists()) {
+        const userData = userSnap.data();
+        return userData.preferences || null;
+      }
+      return null;
+    } catch (error) {
+      console.error("Error getting user preferences:", error);
+      return null;
+    }
+  }
 }
 
 export const cloudStorageService = new CloudStorageService();

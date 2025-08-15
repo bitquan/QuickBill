@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: 'class', // Enable class-based dark mode
   theme: {
     extend: {
       colors: {
@@ -22,7 +23,49 @@ module.exports = {
         84: "21rem",
         96: "24rem",
       },
+      animation: {
+        'fadeIn': 'fadeIn 0.3s ease-in-out',
+        'slideIn': 'slideIn 0.3s ease-in-out',
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'bounce-slow': 'bounce 2s infinite',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideIn: {
+          '0%': { transform: 'translateY(10px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+      },
+      backdropBlur: {
+        xs: '2px',
+      },
+      transitionProperty: {
+        'height': 'height',
+        'spacing': 'margin, padding',
+      }
     },
   },
-  plugins: [],
+  plugins: [
+    // Add any additional plugins here
+    function({ addUtilities }) {
+      const newUtilities = {
+        '.text-shadow': {
+          textShadow: '2px 2px 4px rgba(0,0,0,0.10)',
+        },
+        '.text-shadow-md': {
+          textShadow: '4px 4px 8px rgba(0,0,0,0.12)',
+        },
+        '.text-shadow-lg': {
+          textShadow: '15px 15px 30px rgba(0,0,0,0.11)',
+        },
+        '.text-shadow-none': {
+          textShadow: 'none',
+        },
+      }
+      addUtilities(newUtilities)
+    }
+  ],
 };

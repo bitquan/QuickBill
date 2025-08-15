@@ -94,7 +94,7 @@ export default function AccountManagement() {
           <h3 className="font-medium text-blue-900 mb-2">Upgrade to Pro</h3>
           <p className="text-blue-700 text-sm mb-3">
             Get unlimited invoices, remove watermarks, and access Pro features
-            for just $4.99/month.
+            for just $9.99/month.
           </p>
           <Button variant="primary" className="bg-blue-600 hover:bg-blue-700">
             Upgrade to Pro
@@ -113,7 +113,7 @@ export default function AccountManagement() {
         <div className="flex items-center justify-between p-4 bg-green-50 border border-green-200 rounded-lg">
           <div>
             <h3 className="font-medium text-green-900">QuickBill Pro</h3>
-            <p className="text-sm text-green-700">$4.99/month</p>
+            <p className="text-sm text-green-700">$9.99/month</p>
           </div>
           <div className="px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">
             {subscription?.status === "active"

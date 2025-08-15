@@ -30,10 +30,10 @@ class StorageService {
       return JSON.parse(stored);
     }
 
-    // Default for new users
+    // Default for new users - unlimited free invoices
     const defaultData: UserData = {
       invoicesCreated: 0,
-      maxInvoices: 3,
+      maxInvoices: Infinity, // Unlimited free invoices
       isPro: false,
       lastInvoiceNumber: 0,
     };

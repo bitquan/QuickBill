@@ -1,0 +1,134 @@
+{
+  "timestamp": "2025-08-15T05:04:59.005Z",
+  "url": "https://quickbill-app-b2467.web.app",
+  "summary": {
+    "passed": 12,
+    "total": 12,
+    "successRate": 100
+  },
+  "tests": {
+    "loading": {
+      "success": true,
+      "data": {
+        "accessible": true,
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "contentLength": 4629,
+        "isHTML": true,
+        "isReactApp": true,
+        "hasViteManifest": true,
+        "loadTime": 1755234298628
+      },
+      "body": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/vite.svg\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n\n    <!-- SEO Meta Tags -->\n    <title>\n      QuickBill - Professional Invoice Generator | Create Invoices Fast\n    </title>\n    <meta\n      name=\"description\"\n      content=\"Create professional invoices in minutes with QuickBill. 10+ industry templates, email integration, cloud storage. Unlimited free invoices, Pro at $9.99/month.\"\n    />\n    <meta\n      name=\"keywords\"\n      content=\"invoice generator, professional invoices, business invoicing, freelancer tools, contractor invoices, invoice templates\"\n    />\n    <meta name=\"author\" content=\"QuickBill\" />\n\n    <!-- Open Graph / Facebook -->\n    <meta property=\"og:type\" content=\"website\" />\n    <meta property=\"og:url\" content=\"https://quickbill-app.web.app/\" />\n    <meta\n      property=\"og:title\"\n      content=\"QuickBill - Professional Invoice Generator\"\n    />\n    <meta\n      property=\"og:description\"\n      content=\"Create professional invoices in minutes. 10+ industry templates, get paid 40% faster. Free tier available.\"\n    />\n    <meta\n      property=\"og:image\"\n      content=\"https://quickbill-app.web.app/og-image.png\"\n    />\n\n    <!-- Twitter -->\n    <meta property=\"twitter:card\" content=\"summary_large_image\" />\n    <meta property=\"twitter:url\" content=\"https://quickbill-app.web.app/\" />\n    <meta\n      property=\"twitter:title\"\n      content=\"QuickBill - Professional Invoice Generator\"\n    />\n    <meta\n      property=\"twitter:description\"\n      content=\"Create professional invoices in minutes. 10+ industry templates, get paid 40% faster.\"\n    />\n    <meta\n      property=\"twitter:image\"\n      content=\"https://quickbill-app.web.app/og-image.png\"\n    />\n    <meta name=\"robots\" content=\"index, follow\" />\n\n    <!-- Open Graph / Facebook -->\n    <meta property=\"og:type\" content=\"website\" />\n    <meta property=\"og:url\" content=\"https://quickbill-app-b2467.web.app/\" />\n    <meta\n      property=\"og:title\"\n      content=\"QuickBill - Professional Invoice Generator\"\n    />\n    <meta\n      property=\"og:description\"\n      content=\"Create professional invoices in minutes with QuickBill. 10+ industry templates, email integration, cloud storage.\"\n    />\n    <meta\n      property=\"og:image\"\n      content=\"https://quickbill-app-b2467.web.app/og-image.png\"\n    />\n\n    <!-- Twitter -->\n    <meta property=\"twitter:card\" content=\"summary_large_image\" />\n    <meta\n      property=\"twitter:url\"\n      content=\"https://quickbill-app-b2467.web.app/\"\n    />\n    <meta\n      property=\"twitter:title\"\n      content=\"QuickBill - Professional Invoice Generator\"\n    />\n    <meta\n      property=\"twitter:description\"\n      content=\"Create professional invoices in minutes with QuickBill. 10+ industry templates, email integration, cloud storage.\"\n    />\n    <meta\n      property=\"twitter:image\"\n      content=\"https://quickbill-app-b2467.web.app/og-image.png\"\n    />\n\n    <!-- Additional SEO -->\n    <link rel=\"canonical\" href=\"https://quickbill-app-b2467.web.app/\" />\n    <meta name=\"theme-color\" content=\"#2563eb\" />\n    <meta name=\"stripe-price-id\" content=\"price_1RwA92Dfc44028kidd3L70MD\" />\n    <meta name=\"subscription-price\" content=\"9.99\" />\n\n    <!-- Structured Data -->\n    <script type=\"application/ld+json\">\n      {\n        \"@context\": \"https://schema.org\",\n        \"@type\": \"WebApplication\",\n        \"name\": \"QuickBill\",\n        \"description\": \"Professional invoice generator for freelancers and businesses\",\n        \"url\": \"https://quickbill-app-b2467.web.app/\",\n        \"applicationCategory\": \"BusinessApplication\",\n        \"operatingSystem\": \"Web\",\n        \"offers\": {\n          \"@type\": \"Offer\",\n          \"price\": \"9.99\",\n          \"priceCurrency\": \"USD\",\n          \"priceSpecification\": {\n            \"@type\": \"PriceSpecification\",\n            \"price\": \"9.99\",\n            \"priceCurrency\": \"USD\",\n            \"unitText\": \"MONTH\"\n          },\n          \"identifier\": \"price_1RwA92Dfc44028kidd3L70MD\",\n          \"description\": \"QuickBill Pro - Unlimited invoices and premium features\"\n        },\n        \"featureList\": [\n          \"Professional invoice templates\",\n          \"Email integration\",\n          \"Cloud storage\",\n          \"PDF generation\",\n          \"Industry-specific templates\"\n        ]\n      }\n    </script>\n    <script type=\"module\" crossorigin src=\"/assets/index-xgV7msu0.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-CKsLBQgJ.css\">\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n"
+    },
+    "pricing": {
+      "hasOldPrice": false,
+      "hasNewPrice": true,
+      "hasOldPriceId": false,
+      "hasNewPriceId": true,
+      "hasUnlimitedText": true,
+      "hasOldLimit": false,
+      "hasProMention": false
+    },
+    "assets": [
+      {
+        "asset": "/manifest.json",
+        "accessible": true,
+        "status": 200,
+        "size": 0
+      },
+      {
+        "asset": "/robots.txt",
+        "accessible": true,
+        "status": 200,
+        "size": 157
+      },
+      {
+        "asset": "/sitemap.xml",
+        "accessible": true,
+        "status": 200,
+        "size": 627
+      },
+      {
+        "asset": "/favicon.ico",
+        "accessible": true,
+        "status": 200,
+        "size": 4629
+      }
+    ],
+    "performance": {
+      "loadTime": 25,
+      "contentSize": 4629,
+      "hasGzip": false,
+      "hasCache": true,
+      "hasETag": true
+    },
+    "mobile": {
+      "hasViewportMeta": true,
+      "hasResponsiveCSS": false,
+      "hasTouchIcons": false,
+      "hasManifest": false,
+      "hasTailwindCSS": false,
+      "hasMediaQueries": false
+    },
+    "seo": {
+      "hasTitle": true,
+      "hasDescription": true,
+      "hasKeywords": true,
+      "hasOGTags": true,
+      "hasTwitterCards": false,
+      "hasCanonical": true,
+      "hasStructuredData": true
+    }
+  },
+  "checks": [
+    {
+      "name": "App loads successfully",
+      "passed": true
+    },
+    {
+      "name": "Returns HTML content",
+      "passed": true
+    },
+    {
+      "name": "React app working",
+      "passed": true
+    },
+    {
+      "name": "Old pricing removed",
+      "passed": true
+    },
+    {
+      "name": "New pricing present",
+      "passed": true
+    },
+    {
+      "name": "Old price ID removed",
+      "passed": true
+    },
+    {
+      "name": "New price ID present",
+      "passed": true
+    },
+    {
+      "name": "Unlimited text present",
+      "passed": true
+    },
+    {
+      "name": "Old limits removed",
+      "passed": true
+    },
+    {
+      "name": "Good performance",
+      "passed": true
+    },
+    {
+      "name": "Mobile responsive",
+      "passed": true
+    },
+    {
+      "name": "SEO optimized",
+      "passed": true
+    }
+  ]
+}

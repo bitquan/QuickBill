@@ -64,7 +64,7 @@ class AnalyticsService {
   }
 
   // Track Pro upgrade
-  trackUpgrade(value: number = 4.99) {
+  trackUpgrade(value: number = 9.99) {
     this.trackConversion("purchase", value);
     window.gtag("event", "purchase", {
       transaction_id: `upgrade_${Date.now()}`,

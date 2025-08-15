@@ -150,7 +150,7 @@ export default function UpgradeModal({
 
         {/* Pricing */}
         <div className="bg-blue-50 rounded-lg p-4 mb-6 text-center">
-          <div className="text-3xl font-bold text-blue-900">$4.99</div>
+          <div className="text-3xl font-bold text-blue-900">$9.99</div>
           <div className="text-sm text-blue-700">per month</div>
           <div className="text-xs text-blue-600 mt-1">Cancel anytime</div>
         </div>

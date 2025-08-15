@@ -2,8 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#3b82f6" />
+    <meta name="background-color" content="#ffffff" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="QuickBill" />
+    <meta name="msapplication-TileColor" content="#3b82f6" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    
+    <!-- PWA Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-144x144.svg" />
+    <link rel="icon" type="image/svg+xml" href="/icons/icon-144x144.svg" />
+    <link rel="mask-icon" href="/icons/icon-144x144.svg" color="#3b82f6" />
+    <link rel="shortcut icon" href="/icons/icon-144x144.svg" />
 
     <!-- SEO Meta Tags -->
     <title>
@@ -11,7 +27,7 @@
     </title>
     <meta
       name="description"
-      content="Create professional invoices in minutes with QuickBill. 10+ industry templates, email integration, cloud storage. Free tier available, Pro at $4.99/month."
+      content="Create professional invoices in minutes with QuickBill. 10+ industry templates, email integration, cloud storage. Unlimited free invoices, Pro at $9.99/month."
     />
     <meta
       name="keywords"
@@ -88,8 +104,9 @@
     />
 
     <!-- Additional SEO -->
-    <link rel="canonical" href="https://quickbill-app-b2467.web.app/" />
-    <meta name="theme-color" content="#2563eb" />
+    <link rel="canonical" href="https://quickbill-app-b2467.web.app" />
+    <meta name="stripe-price-id" content="price_1RwA92Dfc44028kidd3L70MD" />
+    <meta name="subscription-price" content="9.99" />
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -103,8 +120,15 @@
         "operatingSystem": "Web",
         "offers": {
           "@type": "Offer",
-          "price": "4.99",
+          "price": "9.99",
           "priceCurrency": "USD",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "9.99",
+            "priceCurrency": "USD",
+            "unitText": "MONTH"
+          },
+          "identifier": "price_1RwA92Dfc44028kidd3L70MD",
           "description": "QuickBill Pro - Unlimited invoices and premium features"
         },
         "featureList": [

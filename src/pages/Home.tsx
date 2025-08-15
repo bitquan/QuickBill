@@ -59,7 +59,7 @@ export default function Home() {
           {/* Quick stats */}
           <div className="mt-6 text-sm text-gray-500">
             Join 10,000+ businesses creating professional invoices • Free tier:
-            3 invoices • Pro: $4.99/month
+            3 invoices • Pro: $9.99/month
           </div>
         </div>
 
@@ -224,7 +224,7 @@ export default function Home() {
 
           <div className="text-center">
             <p className="text-lg font-medium mb-4">
-              Only $4.99/month • Cancel anytime • 3 free invoices to start
+              Only $9.99/month • Cancel anytime • 3 free invoices to start
             </p>
             <Link to="/create" className="inline-block">
               <Button

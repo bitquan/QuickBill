@@ -217,7 +217,7 @@ export const EnhancedTemplateFeaturesDemo: React.FC = () => {
                 <div className="text-3xl mb-3">🎯</div>
                 <div className="text-xl font-bold text-green-600 mb-2">Pro</div>
                 <div className="text-sm text-gray-700">
-                  Justifies $4.99/month subscription value
+                  Justifies $9.99/month subscription value
                 </div>
               </div>
             </div>

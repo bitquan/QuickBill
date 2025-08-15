@@ -142,7 +142,7 @@ export default function EnhancedUpgradeModal({
               </h3>
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div>
-                  <div className="text-2xl font-bold text-green-600">$4.99</div>
+                  <div className="text-2xl font-bold text-green-600">$9.99</div>
                   <div className="text-sm text-gray-600">Monthly cost</div>
                 </div>
                 <div>
@@ -227,7 +227,7 @@ export default function EnhancedUpgradeModal({
           <div className="text-center mb-8">
             <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl p-6">
               <div className="text-4xl font-bold mb-2">
-                $4.99<span className="text-lg">/month</span>
+                $9.99<span className="text-lg">/month</span>
               </div>
               <div className="text-blue-100 mb-4">
                 Cancel anytime • 30-day money-back guarantee

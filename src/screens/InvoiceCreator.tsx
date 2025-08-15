@@ -409,7 +409,7 @@ export default function InvoiceCreator() {
             </p>
             {(currentUser ? storageService.getRemainingInvoices() : 3) <= 1 && (
               <p className="text-sm text-blue-600 mt-1">
-                Upgrade to Pro for unlimited invoices - just $4.99/month
+                Upgrade to Pro for unlimited invoices - just $9.99/month
               </p>
             )}
           </>
@@ -588,15 +588,15 @@ export default function InvoiceCreator() {
 
           <div className="flex justify-end mt-6">
             <div className="w-80 space-y-2">
-              <div className="bg-gray-50 p-4 rounded-lg space-y-3">
+              <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg space-y-3">
                 <div className="flex justify-between">
-                  <span>Subtotal:</span>
-                  <span>${calculateSubtotal().toFixed(2)}</span>
+                  <span className="text-gray-900 dark:text-white">Subtotal:</span>
+                  <span className="text-gray-900 dark:text-white">${calculateSubtotal().toFixed(2)}</span>
                 </div>
 
                 <div className="flex justify-between items-center">
                   <div className="flex items-center gap-2">
-                    <span>Tax Rate (%):</span>
+                    <span className="text-gray-900 dark:text-white">Tax Rate (%):</span>
                     <div className="w-20">
                       <NumberField
                         label=""
@@ -607,13 +607,13 @@ export default function InvoiceCreator() {
                       />
                     </div>
                   </div>
-                  <span>${calculateTax().toFixed(2)}</span>
+                  <span className="text-gray-900 dark:text-white">${calculateTax().toFixed(2)}</span>
                 </div>
 
-                <div className="border-t pt-2">
+                <div className="border-t border-gray-200 dark:border-gray-600 pt-2">
                   <div className="flex justify-between font-bold text-lg">
-                    <span>Total:</span>
-                    <span>${calculateTotal().toFixed(2)}</span>
+                    <span className="text-gray-900 dark:text-white">Total:</span>
+                    <span className="text-gray-900 dark:text-white">${calculateTotal().toFixed(2)}</span>
                   </div>
                 </div>
               </div>

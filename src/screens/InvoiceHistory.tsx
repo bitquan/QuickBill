@@ -234,7 +234,7 @@ export default function InvoiceHistory() {
               </p>
             </div>
             <Button variant="primary" size="sm">
-              Upgrade for $4.99/month
+              Upgrade for $9.99/month
             </Button>
           </div>
         </div>

@@ -35,7 +35,7 @@ function simulateProSubscription() {
     subscriptionId: "sub_test_123",
     status: "active",
     currentPeriodEnd: Date.now() + 30 * 24 * 60 * 60 * 1000, // 30 days
-    priceId: "price_1RvkbDDfc44028ki94G00DCn",
+    priceId: "price_1RwA92Dfc44028kidd3L70MD",
   };
 
   localStorage.setItem(

@@ -98,7 +98,7 @@ class AdminService {
         totalInvoices: invoices.length,
         proUsers,
         freeUsers,
-        revenueThisMonth: proUsers * 4.99, // $4.99 per Pro user
+        revenueThisMonth: proUsers * 9.99, // $9.99 per Pro user
         invoicesThisMonth,
         newUsersThisMonth,
         activeUsersThisWeek,

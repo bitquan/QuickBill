@@ -38,7 +38,7 @@ export default function Billing() {
       setBillingInfo({
         subscriptionStatus: "active",
         planName: "QuickBill Pro",
-        price: "$4.99",
+        price: "$9.99",
         billingPeriod: "monthly",
         nextBillingDate: getNextBillingDate(),
         invoicesUsed: userData.invoicesCreated,
@@ -294,7 +294,7 @@ export default function Billing() {
                   onClick={() => setShowUpgradeModal(true)}
                   className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white"
                 >
-                  Upgrade Now - $4.99/month
+                  Upgrade Now - $9.99/month
                 </Button>
               </div>
             )}

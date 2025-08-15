@@ -66,7 +66,7 @@ export default function AdminDashboard() {
         totalInvoices: 8934,
         proUsers: 234,
         freeUsers: 1013,
-        revenueThisMonth: 1169.66, // 234 * $4.99
+        revenueThisMonth: 1169.66, // 234 * $9.99
         invoicesThisMonth: 2456,
       });
 
@@ -334,7 +334,7 @@ export default function AdminDashboard() {
                   </div>
                   <div className="flex justify-between">
                     <span>Average per Pro User</span>
-                    <span className="font-semibold">$4.99</span>
+                    <span className="font-semibold">$9.99</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Projected Annual</span>

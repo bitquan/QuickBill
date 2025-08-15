@@ -1,4 +1,5 @@
 import { useState } from "react";
+import * as React from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../components/Button";
@@ -26,8 +27,23 @@ export default function More() {
     }
   };
 
-  // Show loading state while checking subscription
-  if (isLoading) {
+  // Show loading state while checking subscription (but timeout after 3 seconds)
+  const [loadingTimeout, setLoadingTimeout] = useState(false);
+  
+  React.useEffect(() => {
+    console.log('More component - isLoading:', isLoading, 'isProUser:', isProUser);
+    
+    const timer = setTimeout(() => {
+      if (isLoading) {
+        console.log('More component - Loading timeout reached, defaulting to free user');
+        setLoadingTimeout(true);
+      }
+    }, 3000);
+    
+    return () => clearTimeout(timer);
+  }, [isLoading, isProUser]);
+
+  if (isLoading && !loadingTimeout) {
     return (
       <div className="flex-1 flex items-center justify-center">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
@@ -35,7 +51,8 @@ export default function More() {
     );
   }
 
-  const isPro = isProUser;
+  // Default to free user if subscription check fails or times out
+  const isPro = isProUser && !loadingTimeout;
 
   if (isPro) {
     return (
@@ -127,7 +144,10 @@ function ProMorePage({
           Account Management
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <button className="p-3 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+          <button 
+            onClick={() => navigate('/settings')}
+            className="p-3 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+          >
             <div className="text-lg mb-1">⚙️</div>
             <div className="text-sm font-medium text-gray-900">Settings</div>
             <div className="text-xs text-gray-500">Preferences</div>
@@ -136,7 +156,7 @@ function ProMorePage({
           <button className="p-3 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
             <div className="text-lg mb-1">💳</div>
             <div className="text-sm font-medium text-gray-900">Billing</div>
-            <div className="text-xs text-gray-500">$4.99/month</div>
+            <div className="text-xs text-gray-500">$9.99/month</div>
           </button>
 
           <button className="p-3 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
@@ -215,6 +235,7 @@ function FreeMorePage({
   handleLogout,
 }: any) {
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
+  const navigate = useNavigate();
 
   const handleUpgrade = () => {
     // This will be called when payment is successful
@@ -247,7 +268,7 @@ function FreeMorePage({
 
         <div className="text-center">
           <p className="text-lg font-medium mb-4">
-            Only $4.99/month • Cancel anytime • ROI typically 10x+
+            Only $9.99/month • Cancel anytime • ROI typically 10x+
           </p>
           <Button
             variant="secondary"
@@ -283,6 +304,29 @@ function FreeMorePage({
             <div className="text-sm text-gray-500">Storage</div>
             <div className="text-xs text-gray-500 mt-1">Device only</div>
           </div>
+        </div>
+      </div>
+
+      {/* Account Management - Added for Free Users */}
+      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">
+          Account Management
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <button 
+            onClick={() => navigate('/settings')}
+            className="p-3 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+          >
+            <div className="text-lg mb-1">⚙️</div>
+            <div className="text-sm font-medium text-gray-900">Settings</div>
+            <div className="text-xs text-gray-500">Preferences</div>
+          </button>
+
+          <button className="p-3 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors opacity-50 cursor-not-allowed">
+            <div className="text-lg mb-1">💳</div>
+            <div className="text-sm font-medium text-gray-900">Billing</div>
+            <div className="text-xs text-gray-500">Pro feature</div>
+          </button>
         </div>
       </div>
 

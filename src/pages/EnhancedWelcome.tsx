@@ -1,13 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../components/Button";
-import storageService from "../services/storage";
 
 export default function EnhancedWelcome() {
-  const actualRemaining = storageService.getRemainingInvoices();
-  // For welcome page, always show free tier experience (3 invoices) to encourage conversion
-  const remainingInvoices =
-    actualRemaining === Infinity ? 3 : Math.min(actualRemaining, 3);
   const [selectedIndustry, setSelectedIndustry] = useState<string>("");
 
   const industries = [
@@ -87,16 +82,16 @@ export default function EnhancedWelcome() {
               </h3>
             </div>
             <p className="text-gray-600 mb-4">
-              Create your first{" "}
+              Create{" "}
               <span className="font-bold text-green-600">
-                {remainingInvoices}
+                unlimited basic invoices
               </span>{" "}
-              invoices free
+              free
             </p>
             <div className="w-full bg-gray-200 rounded-full h-3 mb-3">
               <div
                 className="bg-gradient-to-r from-green-400 to-blue-500 h-3 rounded-full transition-all duration-300"
-                style={{ width: `${((3 - remainingInvoices) / 3) * 100}%` }}
+                style={{ width: "100%" }}
               />
             </div>
             <p className="text-sm text-gray-500">No credit card required</p>
@@ -322,7 +317,7 @@ export default function EnhancedWelcome() {
                 What happens after 3 invoices?
               </h3>
               <p className="text-gray-600">
-                You can upgrade to Pro for just $4.99/month to get unlimited
+                You can upgrade to Pro for just $9.99/month to get unlimited
                 invoices, cloud sync, and advanced features. Or continue using
                 the free version by creating a new account.
               </p>
